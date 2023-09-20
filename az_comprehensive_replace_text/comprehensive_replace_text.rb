@@ -9,18 +9,28 @@ module AlexZahn
     def self.comprehensiveReplaceText ()
   
       # Prompt user for text to find
-      find_text = UI.inputbox(
+      text_to_find = UI.inputbox(
         ["Text to find:      "], 
         [""],
         "Text to Find"
-      )[0]
+      )
+      if (text_to_find == false)
+        return false
+      else
+        text_to_find = text_to_find[0]
+      end
   
       # Prompt user for replacement text
-      replace_text = UI.inputbox(
+      replacement_text = UI.inputbox(
         ["Replacement text:      "], 
         [""],
         "Replacement Text"
-      )[0]
+      )
+      if (replacement_text == false)
+        return false
+      else
+        replacement_text = replacement_text[0]
+      end
   
       model = Sketchup.active_model
 
@@ -36,33 +46,33 @@ module AlexZahn
     
         # Loop through each component and rename any matches
         components.each do |component|
-          if component.name.include? find_text
+          if component.name.include? text_to_find
             original_name = component.name
-            new_name = original_name.gsub(find_text, replace_text)
+            new_name = original_name.gsub(text_to_find, replacement_text)
             component.name = new_name
           end
         end
     
         # Loop through each layer and rename any matches
         model.layers.each do |layer|
-          if layer.name.include? find_text
+          if layer.name.include? text_to_find
             original_name = layer.name
-            new_name = original_name.gsub(find_text, replace_text)
+            new_name = original_name.gsub(text_to_find, replacement_text)
             layer.name = new_name
           end
         end
     
         # Loop through each material and rename any matches
         model.materials.each do |material|
-          if material.name.include? find_text
+          if material.name.include? text_to_find
             original_name = material.name
-            new_name = original_name.gsub(find_text, replace_text)
+            new_name = original_name.gsub(text_to_find, replacement_text)
             material.name = new_name
           end
         end
     
         # Rename the model
-        model.name = model.name.gsub(find_text, replace_text)
+        model.name = model.name.gsub(text_to_find, replacement_text)
         
         ## END UNDOABLE OPERATION
         # model.commit_operation
