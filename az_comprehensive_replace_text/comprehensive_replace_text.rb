@@ -4,7 +4,7 @@
 require 'sketchup.rb'
 
 module AlexZahn
-  module CRT
+  module ComprehensiveReplaceText
 
     def self.comprehensiveReplaceText ()
   
@@ -89,5 +89,5 @@ module AlexZahn
       file_loaded(__FILE__)
     end
 
-  end # module CRT
+  end # module ComprehensiveReplaceText
 end # module AlexZahn

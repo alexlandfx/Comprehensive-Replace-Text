@@ -2,7 +2,7 @@ require 'sketchup.rb'
 require 'extensions.rb'
 
 module AlexZahn
-  module CRT
+  module ComprehensiveReplaceText
     unless file_loaded?(__FILE__)
 
       extension = SketchupExtension.new('Comprehensive Replace Text', 'az_comprehensive_replace_text/comprehensive_replace_text.rb')
@@ -16,5 +16,5 @@ module AlexZahn
       file_loaded(__FILE__)
 
     end
-  end # module CRT
+  end # module ComprehensiveReplaceText
 end # module AlexZahn
