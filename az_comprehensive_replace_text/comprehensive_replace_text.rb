@@ -82,11 +82,11 @@ module AlexZahn
     end # comprehensiveReplaceText
 
     unless file_loaded?(__FILE__)
-      command = UI::Command.new("Comprehensive Replace Text") {self.comprehensiveReplaceText}
-      command.status_bar_text = "Find-and-Replace text in Components, Tags, Material Names, and Model Name."
-      UI.menu('Plugins').add_item(command)
+
+      UI.menu('Plugins').add_item('Comprehensive Replace Text') {self.comprehensiveReplaceText}
       
       file_loaded(__FILE__)
+
     end
 
   end # module ComprehensiveReplaceText
